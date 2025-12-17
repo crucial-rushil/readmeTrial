@@ -9,7 +9,7 @@
 * [Application Routes](#-application-routes)
 * [Team and Roles](#-team-and-roles)
 * [Prerequisites](#-prerequisites)
-* [Installation & Setup](#-installation--setup)
+* [Installation and Setup](#-installation-and-setup)
 * [Deployment](#-deployment)
 * [Admin Login](#-admin-login-development)
 * [Notes](#-notes)
@@ -139,7 +139,7 @@ Ensure the following are installed before setup:
 
 ---
 
-## ⬇️ Installation & Setup
+## ⬇️ Installation and Setup
 
 ### Frontend Setup
 
@@ -199,12 +199,6 @@ uvicorn main:app --host 0.0.0.0 --port 10000
 | `/dashboard`   | Protected admin dashboard that surfaces real-time, Airtable-backed data. Admins can review submitted invoices, monitor payment and purchase order status, inspect Community Leader records, and track the progress of contract generation without directly accessing Airtable. |
 | `/invoiceform` | Public-facing invoice submission page for creators. Collects structured payment information and invoice PDFs, performs basic client-side validation, and sends submissions to the backend for automated processing and Airtable synchronization.                               |
 | `/thankyou`    | Confirmation page shown after a successful invoice submission. Provides creators with clear feedback that their invoice has been received and processed, reducing duplicate submissions and follow-up questions.                                                               |
-
-------|------------|
-| `/` | Admin login page |
-| `/dashboard` | Protected admin dashboard |
-| `/invoiceform` | Public invoice submission form |
-| `/thankyou` | Confirmation page after submission |
 
 ---
 

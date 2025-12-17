@@ -9,7 +9,7 @@
 * [Application Routes](#-application-routes)
 * [Team and Roles](#-team-and-roles)
 * [Prerequisites](#-prerequisites)
-* [Installation and Setup](#-installation-and-setup)
+* [Installation and Setup](#️-installation-and-setup)
 * [Deployment](#-deployment)
 * [Admin Login](#-admin-login-development)
 * [Notes](#-notes)
@@ -47,7 +47,7 @@ The system is split into two major components:
 * **Deployment:** Render
 * **Purpose:**
 
-  * Act as the system’s source of truth and automation engine
+  * Act as the system's source of truth and automation engine
   * Process invoice submissions from the frontend
   * Update multiple Airtable bases in a consistent, deterministic manner
   * Generate contract PDFs based on submitted data
@@ -219,7 +219,7 @@ Password: password123
 
 ## 📌 Notes
 
-* This project is designed to scale with Adobe’s internal Airtable infrastructure
+* This project is designed to scale with Adobe's internal Airtable infrastructure
 * Airtable schemas are assumed to remain stable
 * Contract generation is modular and extensible
 

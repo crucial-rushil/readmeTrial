@@ -122,18 +122,10 @@ Each submission is treated as a single transaction so that partial updates do no
 
 Ensure the following are installed before setup:
 
-### General
-
 * VS Code
 * Git
-
-### Frontend
-
 * Node.js (v18+ recommended)
 * npm
-
-### Backend
-
 * Python 3.10+
 * pip
 

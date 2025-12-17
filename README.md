@@ -2,21 +2,21 @@
 
 ## 📚 Table of Contents
 
-<details>
-<summary><strong>Click to expand</strong></summary>
+<details open>
+<summary><strong>Contents</strong></summary>
 
-* 🌟 [Introduction](#-introduction)
-* 🧱 [System Architecture](#-system-architecture-high-level)
-* 🎯 [Frontend Overview](#-frontend-overview)
-* ⚙️ [Backend Overview](#-backend-overview)
-* 🌐 [Application Routes](#-application-routes)
-* 👥 [Team and Roles](#-team-and-roles)
-* 🧰 [Prerequisites](#-prerequisites)
-* ⬇️ [Installation & Setup](#-installation--setup)
-* 🚀 [Deployment](#-deployment)
-* 🔐 [Admin Login](#-admin-login-development)
-* 📌 [Notes](#-notes)
-* 📄 [License](#-license)
+- 🌟 [Introduction](#introduction)
+- 🧱 [System Architecture](#system-architecture-high-level)
+- 🎯 [Frontend Overview](#frontend-overview)
+- ⚙️ [Backend Overview](#backend-overview)
+- 🌐 [Application Routes](#application-routes)
+- 👥 [Team and Roles](#team-and-roles)
+- 🧰 [Prerequisites](#prerequisites)
+- ⬇️ [Installation & Setup](#installation--setup)
+- 🚀 [Deployment](#deployment)
+- 🔐 [Admin Login](#admin-login-development)
+- 📌 [Notes](#notes)
+- 📄 [License](#license)
 
 </details>
 

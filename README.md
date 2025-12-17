@@ -1,5 +1,25 @@
 # Adobe Invoice Automation Platform
 
+## 📚 Table of Contents
+
+<details>
+<summary><strong>Click to expand</strong></summary>
+
+* 🌟 [Introduction](#-introduction)
+* 🧱 [System Architecture](#-system-architecture-high-level)
+* 🎯 [Frontend Overview](#-frontend-overview)
+* ⚙️ [Backend Overview](#-backend-overview)
+* 🌐 [Application Routes](#-application-routes)
+* 👥 [Team and Roles](#-team-and-roles)
+* 🧰 [Prerequisites](#-prerequisites)
+* ⬇️ [Installation & Setup](#-installation--setup)
+* 🚀 [Deployment](#-deployment)
+* 🔐 [Admin Login](#-admin-login-development)
+* 📌 [Notes](#-notes)
+* 📄 [License](#-license)
+
+</details>
+
 ## 🌟 Introduction
 
 This project introduces an automated system for invoice submission and contract management built for Adobe. The platform replaces a largely manual, Airtable-based workflow with a streamlined, end-to-end solution that centralizes contractor data, reduces operational errors, and improves visibility across teams. By automating invoice intake, Airtable updates, and contract PDF generation, the system significantly improves efficiency and reliability for both administrators and creators.

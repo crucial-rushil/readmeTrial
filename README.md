@@ -22,8 +22,7 @@
 
 ---
 
-<a id="introduction"></a>
-## 🌟 Introduction
+<h2 id="introduction">🌟 Introduction</h2>
 
 This project introduces an automated system for invoice submission and contract management built for Adobe. The platform replaces a largely manual, Airtable-based workflow with a streamlined, end-to-end solution that centralizes contractor data, reduces operational errors, and improves visibility across teams. By automating invoice intake, Airtable updates, and contract PDF generation, the system significantly improves efficiency and reliability for both administrators and creators.
 
@@ -31,82 +30,78 @@ This project introduces an automated system for invoice submission and contract 
 
 ---
 
-<a id="system-architecture"></a>
-## 🧱 System Architecture (High Level)
+<h2 id="system-architecture">🧱 System Architecture (High Level)</h2>
 
 The system is split into two major components:
 
 ### Frontend (Client)
-- **Framework:** React + TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **Deployment:** Vercel
+- **Framework:** React + TypeScript  
+- **Build Tool:** Vite  
+- **Styling:** Tailwind CSS  
+- **Deployment:** Vercel  
 
 **Responsibilities**
-- Collect invoice submissions from creators
-- Provide a secure admin dashboard
-- Display Airtable-backed data in real time
+- Collect invoice submissions from creators  
+- Provide a secure admin dashboard  
+- Display Airtable-backed data in real time  
 
 ### Backend (Server)
-- **Language:** Python
-- **Framework:** FastAPI
-- **Integrations:** PyAirtable, ReportLab
-- **Deployment:** Render
+- **Language:** Python  
+- **Framework:** FastAPI  
+- **Integrations:** PyAirtable, ReportLab  
+- **Deployment:** Render  
 
 **Responsibilities**
-- Act as the system’s automation engine
-- Process invoice submissions
-- Update multiple Airtable bases deterministically
-- Generate contract PDFs
-- Expose REST APIs to the frontend
+- Act as the system’s automation engine  
+- Process invoice submissions  
+- Update multiple Airtable bases deterministically  
+- Generate contract PDFs  
+- Expose REST APIs to the frontend  
 
 ---
 
-<a id="frontend-overview"></a>
-## 🎯 Frontend Overview
+<h2 id="frontend-overview">🎯 Frontend Overview</h2>
 
 ### Initial Goals
-- Build a **secure invoice submission form** for creators
-- Support uploading payment details and invoice PDFs
-- Automatically sync submissions with the backend
-- Provide admins with a **real-time operational dashboard**
+- Build a **secure invoice submission form** for creators  
+- Support uploading payment details and invoice PDFs  
+- Automatically sync submissions with the backend  
+- Provide admins with a **real-time operational dashboard**  
 
 ### Core Pages
-- **Home Page** – Adobe-themed landing page routing users to submission or admin login
-- **Login Page** – Protected admin authentication
-- **Invoice Submission Form** – Public-facing creator form with client-side validation
-- **Admin Dashboard** – Internal dashboard displaying payments, purchase orders, and contract progress
+- **Home Page** – Adobe-themed landing page routing users to submission or admin login  
+- **Login Page** – Protected admin authentication  
+- **Invoice Submission Form** – Public-facing creator form with client-side validation  
+- **Admin Dashboard** – Internal dashboard displaying payments, purchase orders, and contract progress  
 
 The frontend intentionally contains minimal business logic. All validation beyond basic checks, Airtable updates, and contract generation are handled server-side.
 
 ---
 
-<a id="backend-overview"></a>
-## ⚙️ Backend Overview
+<h2 id="backend-overview">⚙️ Backend Overview</h2>
 
 ### Initial Goals
-- **Automate the entire invoice workflow**
-- Eliminate manual Airtable updates
-- Enforce consistent business rules
-- Enable programmatic contract generation
+- **Automate the entire invoice workflow**  
+- Eliminate manual Airtable updates  
+- Enforce consistent business rules  
+- Enable programmatic contract generation  
 
 ### Core Backend Logic
 Using **PyAirtable**, the backend:
-1. Creates a record in the **Payments** table
-2. Updates **Community Leaders** status and attaches invoice PDFs
-3. Adjusts balances in **Purchase Orders**
-4. Generates personalized PDF contracts via **ReportLab** (partially implemented)
+1. Creates a record in the **Payments** table  
+2. Updates **Community Leaders** status and attaches invoice PDFs  
+3. Adjusts balances in **Purchase Orders**  
+4. Generates personalized PDF contracts via **ReportLab** (partially implemented)  
 
 Each submission is processed as a single transaction to prevent partial state updates.
 
 ### Known Integration Notes
-- Hosted on Render using a paid tier to avoid cold starts
-- Airtable base IDs are mocked for development but easily replaceable with production IDs
+- Hosted on Render using a paid tier to avoid cold starts  
+- Airtable base IDs are mocked for development but easily replaceable with production IDs  
 
 ---
 
-<a id="team-and-roles"></a>
-## 👥 Team and Roles
+<h2 id="team-and-roles">👥 Team and Roles</h2>
 
 | Photo | Name | Role | Major |
 |------|------|------|-------|
@@ -118,25 +113,23 @@ Each submission is processed as a single transaction to prevent partial state up
 
 ---
 
-<a id="prerequisites"></a>
-## 🧰 Prerequisites
+<h2 id="prerequisites">🧰 Prerequisites</h2>
 
 ### General
-- VS Code
-- Git
+- VS Code  
+- Git  
 
 ### Frontend
-- Node.js (v18+)
-- npm
+- Node.js (v18+)  
+- npm  
 
 ### Backend
-- Python 3.10+
-- pip
+- Python 3.10+  
+- pip  
 
 ---
 
-<a id="installation-setup"></a>
-## ⬇️ Installation & Setup
+<h2 id="installation-setup">⬇️ Installation & Setup</h2>
 
 ### Frontend
 ```bash

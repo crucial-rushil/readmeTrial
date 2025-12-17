@@ -32,10 +32,11 @@ The system is split into two major components:
 * **Deployment:** Render
 * **Purpose:**
 
-  * Process invoice submissions
-  * Update multiple Airtable bases automatically
+  * Act as the system’s source of truth and automation engine
+  * Process invoice submissions from the frontend
+  * Update multiple Airtable bases in a consistent, deterministic manner
   * Generate contract PDFs based on submitted data
-  * Serve REST APIs consumed by the frontend
+  * Expose REST APIs consumed by the frontend
 
 ---
 
@@ -43,17 +44,21 @@ The system is split into two major components:
 
 ### Initial Goals
 
-* Build a secure invoice submission form for creators
-* Upload invoice details and PDFs
-* Sync Airtable records automatically
-* Provide admins with a real-time dashboard
+The frontend was designed to be the primary interface for both creators and administrators, replacing direct interaction with Airtable and reducing friction in the invoice submission process. The core goals were to:
+
+* Build a **secure invoice submission form** that allows creators to enter payment details and upload invoice PDFs without exposing internal tools.
+* Enforce **basic validation and structure** on submitted data so that incomplete or malformed submissions are caught early.
+* Automatically sync submitted data with the backend so Airtable records stay consistent without manual admin intervention.
+* Provide administrators with a **real-time dashboard** to monitor invoice status, payments, and purchase orders from a single interface.
 
 ### Core Pages
 
-* **Home Page** – Adobe-themed landing page linking to invoice form and admin dashboard
-* **Login Page** – Admin authentication (protected access)
-* **Invoice Submission Form** – Public-facing form for creators to submit payment info and invoices
-* **Admin Dashboard** – View payments, POs, Airtable records, and in-progress contract generation
+* **Home Page** – An Adobe-themed landing page that routes users to either the invoice submission form or the admin login.
+* **Login Page** – A protected authentication page that restricts access to internal tools to authorized admins.
+* **Invoice Submission Form** – A public-facing form where creators submit payment information and upload invoice PDFs, which are then sent to the backend for processing.
+* **Admin Dashboard** – An internal dashboard that displays synced Airtable data, including payments, purchase orders, and community leader records, as well as visibility into in-progress contract generation.
+
+The frontend intentionally contains minimal business logic. All payment handling, Airtable updates, and contract generation are delegated to the backend via REST APIs to keep the client lightweight and secure.
 
 ---
 
@@ -61,23 +66,28 @@ The system is split into two major components:
 
 ### Initial Goals
 
-* Automate the entire invoice workflow
-* Eliminate manual Airtable updates
-* Generate contracts programmatically
+The backend was built to replace a multi-step, human-driven invoice workflow with a single automated pipeline. Before this system, administrators manually reviewed submissions, updated multiple Airtable bases, and tracked balances by hand. The backend goals were to:
+
+* **Automate the entire invoice workflow** so that one submission triggers all required downstream updates.
+* Eliminate manual Airtable edits by centralizing update logic in a FastAPI service.
+* Reduce latency and human error by enforcing consistent business rules server-side.
+* Enable **programmatic contract generation** based on invoice and creator data.
 
 ### Core Backend Logic
 
 Using **PyAirtable**, the backend:
 
-1. Adds a new record to the **Payments** Airtable
-2. Updates the **Community Leaders** Airtable by changing status and attaching invoice PDFs
-3. Adjusts balances in the **Purchase Orders** Airtable
-4. Generates personalized PDF contracts using **ReportLab** (future-facing but partially implemented)
+1. Adds a new record to the **Payments** Airtable upon invoice submission.
+2. Updates the **Community Leaders** Airtable by changing invoice status and attaching uploaded invoice PDFs.
+3. Adjusts balances in the **Purchase Orders** Airtable by subtracting the submitted payment amount.
+4. Generates personalized PDF contracts using **ReportLab** (future-facing but partially implemented).
+
+Each submission is treated as a single transaction so that partial updates do not leave Airtable in an inconsistent state.
 
 ### Known Integration Notes
 
-* Backend is hosted on Render using a paid tier to avoid cold-start delays
-* Airtable base IDs are currently mocked but designed to be replaced with Adobe production IDs
+* The backend is hosted on Render using a paid tier to avoid cold-start delays during periods of inactivity.
+* Airtable base IDs are currently mocked for development but are designed to be replaced with Adobe production Airtable IDs without requiring frontend changes.
 
 ---
 
@@ -168,12 +178,13 @@ uvicorn main:app --host 0.0.0.0 --port 10000
 
 ## 🌐 Application Routes
 
-| Route          | Description                        |
-| -------------- | ---------------------------------- |
-| `/`            | Admin login page                   |
-| `/dashboard`   | Protected admin dashboard          |
-| `/invoiceform` | Public invoice submission form     |
-| `/thankyou`    | Confirmation page after submission |
+| Route          | Description                                                                                                                                                                                                                                                                    |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/`            | Entry point to the application. Displays the admin login screen and acts as the gateway to all protected functionality. Users who are already authenticated are redirected to the dashboard.                                                                                   |
+| `/dashboard`   | Protected admin dashboard that surfaces real-time, Airtable-backed data. Admins can review submitted invoices, monitor payment and purchase order status, inspect Community Leader records, and track the progress of contract generation without directly accessing Airtable. |
+| `/invoiceform` | Public-facing invoice submission page for creators. Collects structured payment information and invoice PDFs, performs basic client-side validation, and sends submissions to the backend for automated processing and Airtable synchronization.                               |
+| `/thankyou`    | Confirmation page shown after a successful invoice submission. Provides creators with clear feedback that their invoice has been received and processed, reducing duplicate submissions and follow-up questions.                                                               |
+
 
 ---
 
